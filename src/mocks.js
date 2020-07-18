@@ -27,6 +27,7 @@ function getRandomTime() {
   return new Date().getTime() - getRandomInt(0, 100000000000)
 }
 
+// TODO generate merchants random list only on npm start
 export const getRandomMerchants = (count=1) => {
   return new Array(count).fill({}).map(() => {
     const firstname = getRandomFromList(firstnames)
