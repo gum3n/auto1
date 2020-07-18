@@ -1,9 +1,9 @@
 import { createStore } from 'redux'
 import reducers from './reducers'
-import mocks from './mocks.js'
+import { getRandomMerchants } from './mocks.js'
 
 export default createStore(
   reducers,
-  mocks,
+  { merchants: getRandomMerchants(30) },
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
