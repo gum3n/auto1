@@ -1,3 +1,9 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { createStore } from 'redux'
+import reducers from './reducers'
+import mocks from './mocks.js'
 
-export default configureStore({ reducer: {} });
+export default createStore(
+  reducers,
+  mocks,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)

@@ -1,9 +1,8 @@
-import React from 'react';
+import React from 'react'
+import MerchantsList from './components/MerchantsList.js'
 
 export default function App() {
   return (
-    <React.Fragment>
-      Hello There!
-    </React.Fragment>
-  );
+    <MerchantsList />
+  )
 }
