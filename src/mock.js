@@ -17,7 +17,7 @@
 // }
 
 // TODO make it random
-export const marchants = [
+export const merchants = [
   {
     id         : 'some_uuid_1',                     // TODO uuid
     firstname  : 'some_first_name_1',
