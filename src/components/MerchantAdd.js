@@ -1,6 +1,13 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import { v4 as uuidv4 } from 'uuid'
 
-export default function MerchantAdd(props) {
+const mapDispatchToProps = (dispatch) => ({
+  // TODO use action creator
+  onSubmit: (values) => dispatch({ type: 'MERCHANTS_ADD', values })
+})
+
+const MerchantAdd = (props) => {
   const [ firstname  , setFirstname  ] = useState('')
   const [ lastname   , setLastname   ] = useState('')
   const [ avatarUrl  , setAvatarUrl  ] = useState('')
@@ -10,7 +17,33 @@ export default function MerchantAdd(props) {
 
   const onSubmit = (event) => {
     event.preventDefault()
-    console.log('onSubmit')
+
+    const id = uuidv4()
+
+    props.onSubmit({
+      id,
+      firstname,
+      lastname,
+      avatarUrl,
+      email,
+      phone,
+      hasPremium,
+    })
+
+    // TODO after proper implementation of redirection this step will
+    //      not be required
+    setFirstname('')
+    setLastname('')
+    setAvatarUrl('')
+    setEmail('')
+    setPhone('')
+    setHasPremium(false)
+
+    // TODO Redirect to created merchant.  This action will be
+    //      asynchronous so redirection should happen after new
+    //      merchant was added.
+
+    props.history.push('/merchant/' + id)
   }
 
   return (
@@ -75,25 +108,24 @@ export default function MerchantAdd(props) {
             required
             id="phone"
             type="tel"
+            pattern="(\+[0-9]{2})?[0-9]{9}"
+            title="Pattern: 123456789 or +00123456789"
             name="phone"
             onChange={event => setPhone(event.target.value)}
             value={phone}
-            placeholder="Phone"
+            placeholder="[+48]000000000"
           />
         </p>
 
         <p>
           <label htmlFor="has-premium">Has Premium</label>
-          <select
-            required
+          <input
             id="has-premium"
+            type="checkbox"
             name="has-premium"
-            onChange={event => setHasPremium(event.target.value)}
-            defaultValue={hasPremium}
-          >
-            <option value="false">No</option>
-            <option value="true">Yes</option>
-          </select>
+            onChange={event => setHasPremium(event.target.checked)}
+            checked={hasPremium}
+          />
         </p>
 
         <p>
@@ -103,3 +135,5 @@ export default function MerchantAdd(props) {
     </>
   )
 }
+
+export default connect(null, mapDispatchToProps)(MerchantAdd)

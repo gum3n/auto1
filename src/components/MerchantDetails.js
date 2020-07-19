@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state, { match }) => ({
@@ -6,10 +7,17 @@ const mapStateToProps = (state, { match }) => ({
 })
 
 const MerchantDetails = ({ merchant }) => {
-  if(!merchant) return (<p><strong>Invalid merchant id</strong></p>)
+  if(!merchant) {
+    return (
+      <>
+        <p><strong>Invalid merchant id</strong></p>
+        <Link to="/">Go Back</Link>
+      </>
+    )
+  }
 
   return (
-    <section>
+    <>
       <img src={'/' + merchant.avatarUrl} alt="avatar" />
       <p><small><code>{merchant.id}</code></small></p>
       {merchant.hasPremium ? (<p><strong>premium</strong></p>) : ''}
@@ -30,7 +38,7 @@ const MerchantDetails = ({ merchant }) => {
           </li>
         )}
       </ol>
-    </section>
+    </>
   )
 }
 
