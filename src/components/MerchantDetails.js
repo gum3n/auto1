@@ -6,7 +6,14 @@ const mapStateToProps = (state, { match }) => ({
   merchant: state.merchants.find(({ id }) => id === match.params.id)
 })
 
-const MerchantDetails = ({ merchant }) => {
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  onRemove: (id) => {
+    dispatch({ type: 'MERCHANTS_REMOVE', id })
+    ownProps.history.push('/')
+  }
+})
+
+const MerchantDetails = ({ merchant, onRemove }) => {
   if(!merchant) {
     return (
       <>
@@ -22,10 +29,18 @@ const MerchantDetails = ({ merchant }) => {
       <p><small><code>{merchant.id}</code></small></p>
       {merchant.hasPremium ? (<p><strong>premium</strong></p>) : ''}
       <h3>{merchant.firstname} {' '} {merchant.lastname}</h3>
+
       <ul>
         <li>{merchant.email}</li>
         <li>{merchant.phone}</li>
       </ul>
+
+      <button onClick={() => onRemove(merchant.id)}>
+        Remove Merchant
+      </button>
+
+      <hr />
+
       <ol>
         {merchant.bids.map(bid =>
           <li key={bid.id}>
@@ -42,4 +57,4 @@ const MerchantDetails = ({ merchant }) => {
   )
 }
 
-export default connect(mapStateToProps)(MerchantDetails)
+export default connect(mapStateToProps, mapDispatchToProps)(MerchantDetails)
