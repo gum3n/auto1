@@ -30,7 +30,7 @@ const MarchentsList = (props) => {
   return (
     <React.Fragment>
       <ol>
-        {props.merchants.map(merchant => (
+        {props.merchants.map(merchant =>
           <MerchantListItem
             key={merchant.id}
             id={merchant.id}
@@ -39,15 +39,15 @@ const MarchentsList = (props) => {
             firstname={merchant.firstname}
             lastname={merchant.lastname}
           />
-        ))}
+        )}
       </ol>
 
-      {props.showPagination ? (
-        <Pagination
-          pagesCount={props.pagesCount}
-          activePage={props.activePage}
-        />
-      ) : ''}
+      {props.showPagination &&
+       <Pagination
+         pagesCount={props.pagesCount}
+         activePage={props.activePage}
+       />
+      }
     </React.Fragment>
   )
 }

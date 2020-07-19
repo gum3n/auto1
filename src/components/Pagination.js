@@ -6,11 +6,11 @@ export default function Pagination({ pagesCount, activePage}) {
 
   return (
     <ul>
-      {activePage > 1 ? (
-        <li><Link to={'/?page=' + (activePage - 1)}>{'<'}</Link></li>
-      ) : ''}
+      {activePage > 1 &&
+       <li><Link to={'/?page=' + (activePage - 1)}>{'<'}</Link></li>
+      }
 
-      {pages.map(page => (
+      {pages.map(page =>
         <li key={page}>
           <Link
             to={'/?page=' + page}
@@ -19,11 +19,11 @@ export default function Pagination({ pagesCount, activePage}) {
             {page}
           </Link>
         </li>
-      ))}
+      )}
 
-      {activePage < pagesCount ? (
-        <li><Link to={'/?page=' + (activePage + 1)}>{'>'}</Link></li>
-      ) : ''}
+      {activePage < pagesCount &&
+       <li><Link to={'/?page=' + (activePage + 1)}>{'>'}</Link></li>
+      }
     </ul>
   )
 }

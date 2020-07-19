@@ -19,7 +19,7 @@ const MerchantDetails = ({ merchant }) => {
         <li>{merchant.phone}</li>
       </ul>
       <ol>
-        {merchant.bids.map(bid => (
+        {merchant.bids.map(bid =>
           <li key={bid.id}>
             <ul>
               <li>{bid.id}</li>
@@ -28,7 +28,7 @@ const MerchantDetails = ({ merchant }) => {
               <li>{new Date(bid.created).toString()}</li>
             </ul>
           </li>
-        ))}
+        )}
       </ol>
     </section>
   )
