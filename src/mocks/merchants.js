@@ -23,6 +23,17 @@ function getRandomTime() {
   return new Date().getTime() - getRandomInt(0, 100000000000)
 }
 
+export const getRandomBids = (count) => {
+  count = count ? Math.min(1, count) : getRandomInt(1, 30)
+
+  return new Array(count).fill({}).map(() => ({
+    id: uuidv4(),
+    carTitle: getRandomFromList(carTitles),
+    amount: getRandomInt(1, 100),
+    created: getRandomTime(),
+  }))
+}
+
 // TODO generate merchants random list only on npm start
 export const getRandomMerchants = (count=1) => {
   return new Array(count).fill({}).map(() => {
@@ -37,12 +48,7 @@ export const getRandomMerchants = (count=1) => {
       email: `${firstname}.${lastname}@gmail.com`,
       phone: getRandomPhone(),
       hasPremium: getRandomFromList([true, false]),
-      bids: new Array(getRandomInt(1, 30)).fill({}).map(() => ({
-        id: uuidv4(),
-        carTitle: getRandomFromList(carTitles),
-        amount: getRandomInt(1, 100),
-        created: getRandomTime(),
-      }))
+      bids: getRandomBids(),
     }
   })
 }
