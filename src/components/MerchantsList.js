@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import MerchantListItem from './MerchantListItem.js'
 import Pagination from './Pagination.js'
 
@@ -26,30 +27,30 @@ const mapStateToProps = (state, ownProps) => {
   return { merchants, showPagination, pagesCount, activePage }
 }
 
-const MarchentsList = (props) => {
-  return (
-    <React.Fragment>
-      <ol>
-        {props.merchants.map(merchant =>
-          <MerchantListItem
-            key={merchant.id}
-            id={merchant.id}
-            hasPremium={merchant.hasPremium}
-            avatarUrl={merchant.avatarUrl}
-            firstname={merchant.firstname}
-            lastname={merchant.lastname}
-          />
-        )}
-      </ol>
+const MarchentsList = (props) => (
+  <>
+    <ol>
+      {props.merchants.map(merchant =>
+        <MerchantListItem
+          key={merchant.id}
+          id={merchant.id}
+          hasPremium={merchant.hasPremium}
+          avatarUrl={merchant.avatarUrl}
+          firstname={merchant.firstname}
+          lastname={merchant.lastname}
+        />
+      )}
+    </ol>
 
-      {props.showPagination &&
-       <Pagination
-         pagesCount={props.pagesCount}
-         activePage={props.activePage}
-       />
-      }
-    </React.Fragment>
-  )
-}
+    {props.showPagination &&
+     <Pagination
+       pagesCount={props.pagesCount}
+       activePage={props.activePage}
+     />
+    }
+
+    <Link to="/add">Add Merchant</Link>
+  </>
+)
 
 export default connect(mapStateToProps)(MarchentsList)
