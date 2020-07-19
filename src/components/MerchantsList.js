@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+
 import MerchantListItem from './MerchantListItem.js'
 import Pagination from './Pagination.js'
 

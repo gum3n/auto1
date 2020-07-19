@@ -1,4 +1,5 @@
 import { createStore } from 'redux'
+
 import reducers from './reducers'
 import { getRandomMerchants } from './mocks/merchants.js'
 

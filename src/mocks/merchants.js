@@ -16,10 +16,7 @@ function getRandomFromList(list) {
 }
 
 function getRandomPhone() {
-  return new Array(3)
-    .fill(new Array(3).fill(0))
-    .map((part) => part.map(() => getRandomInt(0, 10)).join(''))
-    .join('-')
+  return new Array(9).fill(0).map(() => getRandomInt(0, 10)).join('')
 }
 
 function getRandomTime() {
