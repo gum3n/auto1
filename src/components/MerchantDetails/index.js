@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import InvalidId from './InvalidId.js'
 import PersonalData from './PersonalData'
-import Bids from './Bids'
+import Bids from './Bids.js'
 
 const mapStateToProps = (state, { match }) => ({
   merchant: state.merchants.find(({ id }) => id === match.params.id)
@@ -16,10 +16,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     ownProps.history.push('/')
   }
 })
-
-const EditPersonalData = ({ merchant }) => (
-  <p>{'Edit'}</p>
-)
 
 const MerchantDetails = ({ merchant, onRemove }) => {
   if(!merchant) return <InvalidId />
@@ -36,7 +32,7 @@ const MerchantDetails = ({ merchant, onRemove }) => {
 
       <hr />
 
-      <Bids bids={merchant.bids} />
+      <Bids merchantId={merchant.id} bids={merchant.bids} />
     </>
   )
 }
