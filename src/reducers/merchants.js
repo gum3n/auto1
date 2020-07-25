@@ -1,7 +1,9 @@
-import { getRandomBids } from './../mocks/merchants.js'
+import { getRandomMerchants, getRandomBids } from './../mocks/merchants.js'
 
 export default function(state = [], action) {
   switch(action.type) {
+  case 'MERCHANTS_RANDOM_LIST':
+    return getRandomMerchants(34)
   case 'MERCHANTS_ADD':
     return [{ ...action.values, bids: getRandomBids() }, ...state]
   case 'MERCHANTS_EDIT':

@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
 import { BrowserRouter, Route } from 'react-router-dom'
 
 import 'normalize.css'
@@ -8,7 +9,13 @@ import MerchantsList from './components/MerchantsList.js'
 import MerchantDetails from './components/MerchantDetails'
 import MerchantAdd from './components/MerchantAdd.js'
 
-export default function App() {
+const mapDispatchToProps = (dispatch) => ({
+  generateRandomList: () => dispatch({ type: 'MERCHANTS_RANDOM_LIST' })
+})
+
+const App = ({ generateRandomList }) => {
+  useEffect(generateRandomList)
+
   // TODO update document.title to show currently displayed page
   return (
     <BrowserRouter>
@@ -18,3 +25,5 @@ export default function App() {
     </BrowserRouter>
   )
 }
+
+export default connect(null, mapDispatchToProps)(App)
