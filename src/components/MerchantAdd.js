@@ -3,12 +3,8 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid'
 
+import { merchantsAdd } from './../actionCreators.js'
 import MerchantForm from './MerchantForm.js'
-
-const mapDispatchToProps = (dispatch) => ({
-  // TODO use action creator
-  merchantsAdd: (values) => dispatch({ type: 'MERCHANTS_ADD', values })
-})
 
 const MerchantAdd = (props) => {
   const onSubmit = (formData) => {
@@ -32,4 +28,4 @@ const MerchantAdd = (props) => {
   )
 }
 
-export default connect(null, mapDispatchToProps)(MerchantAdd)
+export default connect(null, { merchantsAdd })(MerchantAdd)

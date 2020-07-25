@@ -1,14 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  onSort: (id, column, ascending) => dispatch({
-    type: 'MERCHANTS_SORT_BIDS',
-    id,
-    column,
-    ascending,
-  })
-})
+import { onSort } from './../../actionCreators.js'
 
 const Sort = ({ merchantId, column, children, onSort }) => {
   return (
@@ -20,4 +13,4 @@ const Sort = ({ merchantId, column, children, onSort }) => {
   )
 }
 
-export default connect(null, mapDispatchToProps)(Sort)
+export default connect(null, { onSort })(Sort)

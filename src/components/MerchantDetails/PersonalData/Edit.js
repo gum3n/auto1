@@ -1,15 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { merchantsEdit } from './../../../actionCreators.js'
 import MerchantForm from './../../MerchantForm.js'
-
-const mapDispatchToProps = (dispatch) => ({
-  merchantsEdit: (id, values) => dispatch({
-    type: 'MERCHANTS_EDIT',
-    id,
-    values
-  })
-})
 
 const Edit = ({ merchant, setEdit, merchantsEdit }) => {
   const onSubmit = (formData) => {
@@ -25,4 +18,4 @@ const Edit = ({ merchant, setEdit, merchantsEdit }) => {
   )
 }
 
-export default connect(null, mapDispatchToProps)(Edit)
+export default connect(null, { merchantsEdit })(Edit)

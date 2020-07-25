@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import { merchantsRemove } from './../../actionCreators.js'
 import InvalidId from './InvalidId.js'
 import PersonalData from './PersonalData'
 import Bids from './Bids.js'
@@ -10,14 +11,7 @@ const mapStateToProps = (state, { match }) => ({
   merchant: state.merchants.find(({ id }) => id === match.params.id)
 })
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  onRemove: (id) => {
-    dispatch({ type: 'MERCHANTS_REMOVE', id })
-    ownProps.history.push('/')
-  }
-})
-
-const MerchantDetails = ({ merchant, onRemove }) => {
+const MerchantDetails = ({ merchant, history, merchantsRemove }) => {
   if(!merchant) return <InvalidId />
 
   return (
@@ -26,7 +20,7 @@ const MerchantDetails = ({ merchant, onRemove }) => {
 
       <PersonalData merchant={merchant} />
 
-      <button onClick={() => onRemove(merchant.id)}>
+      <button onClick={() => merchantsRemove(merchant.id, history)}>
         Remove Merchant
       </button>
 
@@ -37,4 +31,4 @@ const MerchantDetails = ({ merchant, onRemove }) => {
   )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MerchantDetails)
+export default connect(mapStateToProps, { merchantsRemove })(MerchantDetails)
