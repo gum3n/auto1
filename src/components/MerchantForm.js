@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 
-export default function MerchantForm(props) {
+const MerchantForm = (props) => {
   const merchant = props.merchant || {}
 
   const [ firstname  , setFirstname  ] = useState(merchant.firstname  || '')
@@ -109,3 +110,19 @@ export default function MerchantForm(props) {
     </form>
   )
 }
+
+MerchantForm.propTypes = {
+  merchant: PropTypes.exact({
+    id         : PropTypes.string,
+    firstname  : PropTypes.string,
+    lastname   : PropTypes.string,
+    avatarUrl  : PropTypes.string,
+    email      : PropTypes.string,
+    phone      : PropTypes.string,
+    hasPremium : PropTypes.bool,
+    bids       : PropTypes.array,
+  }),
+  onSubmit: PropTypes.func.isRequired,
+}
+
+export default MerchantForm

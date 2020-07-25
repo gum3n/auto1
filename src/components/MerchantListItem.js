@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
-export default function MerchantListItem(props) {
+const MerchantListItem = (props) => {
   return (
     <li>
       <Link
@@ -17,3 +18,13 @@ export default function MerchantListItem(props) {
     </li>
   )
 }
+
+MerchantListItem.propTypes = {
+  id         : PropTypes.string.isRequired,
+  hasPremium : PropTypes.bool.isRequired,
+  avatarUrl  : PropTypes.string.isRequired,
+  firstname  : PropTypes.string.isRequired,
+  lastname   : PropTypes.string.isRequired,
+}
+
+export default MerchantListItem

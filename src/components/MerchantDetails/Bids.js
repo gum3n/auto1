@@ -1,5 +1,6 @@
 import React from 'react'
 import Sort from './Sort.js'
+import PropTypes from 'prop-types'
 
 const Bids = ({ merchantId, bids }) => (
   <table>
@@ -24,5 +25,15 @@ const Bids = ({ merchantId, bids }) => (
     </tbody>
   </table>
 )
+
+Bids.propTypes = {
+  merchantId: PropTypes.string.isRequired,
+  bids: PropTypes.arrayOf(PropTypes.exact({
+    id       : PropTypes.string.isRequired,
+    carTitle : PropTypes.string.isRequired,
+    amount   : PropTypes.number.isRequired,
+    created  : PropTypes.number.isRequired,
+  })).isRequired
+}
 
 export default Bids

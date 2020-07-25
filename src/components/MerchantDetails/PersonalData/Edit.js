@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 import { merchantsEdit } from './../../../actionCreators.js'
 import MerchantForm from './../../MerchantForm.js'
@@ -16,6 +17,15 @@ const Edit = ({ merchant, setEdit, merchantsEdit }) => {
       <MerchantForm onSubmit={onSubmit} merchant={merchant} />
     </>
   )
+}
+
+Edit.propTypes = {
+  setEdit       : PropTypes.func.isRequired,
+  merchantsEdit : PropTypes.func.isRequired,
+
+  merchant: PropTypes.shape({
+    id: PropTypes.string.isRequired
+  }).isRequired
 }
 
 export default connect(null, { merchantsEdit })(Edit)

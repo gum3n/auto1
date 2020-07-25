@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid'
+import PropTypes from 'prop-types'
 
 import { merchantsAdd } from './../actionCreators.js'
 import MerchantForm from './MerchantForm.js'
@@ -26,6 +27,10 @@ const MerchantAdd = (props) => {
       <MerchantForm onSubmit={onSubmit} />
     </>
   )
+}
+
+MerchantAdd.propTypes = {
+  merchantsAdd: PropTypes.func.isRequired
 }
 
 export default connect(null, { merchantsAdd })(MerchantAdd)

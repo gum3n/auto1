@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import { merchantsRemove } from './../../actionCreators.js'
 import InvalidId from './InvalidId.js'
@@ -29,6 +30,16 @@ const MerchantDetails = ({ merchant, history, merchantsRemove }) => {
       <Bids merchantId={merchant.id} bids={merchant.bids} />
     </>
   )
+}
+
+MerchantDetails.propTypes = {
+  history         : PropTypes.object.isRequired,
+  merchantsRemove : PropTypes.func.isRequired,
+
+  merchant: PropTypes.shape({
+    id   : PropTypes.string.isRequired,
+    bids : PropTypes.array.isRequired,
+  })
 }
 
 export default connect(mapStateToProps, { merchantsRemove })(MerchantDetails)

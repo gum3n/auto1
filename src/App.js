@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { BrowserRouter, Route } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import { generateRandomList } from './actionCreators.js'
 
 import 'normalize.css'
@@ -10,7 +11,6 @@ import MerchantsList from './components/MerchantsList.js'
 import MerchantDetails from './components/MerchantDetails'
 import MerchantAdd from './components/MerchantAdd.js'
 
-// TODO define propTypes in all components with props
 const App = ({ generateRandomList }) => {
   useEffect(generateRandomList)
 
@@ -22,6 +22,10 @@ const App = ({ generateRandomList }) => {
       <Route path="/add" component={MerchantAdd} />
     </BrowserRouter>
   )
+}
+
+App.propTypes = {
+  generateRandomList: PropTypes.func.isRequired
 }
 
 export default connect(null, { generateRandomList })(App)

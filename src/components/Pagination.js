@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
-export default function Pagination({ pagesCount, activePage}) {
+const Pagination = ({ pagesCount, activePage }) => {
   const pages = new Array(pagesCount).fill(0).map((a, i) => i + 1)
 
   return (
@@ -27,3 +28,10 @@ export default function Pagination({ pagesCount, activePage}) {
     </ul>
   )
 }
+
+Pagination.propTypes = {
+  pagesCount : PropTypes.number.isRequired,
+  activePage : PropTypes.number.isRequired,
+}
+
+export default Pagination

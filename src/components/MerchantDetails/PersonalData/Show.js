@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const Show = ({ merchant, setEdit }) => (
   <>
@@ -17,5 +18,17 @@ const Show = ({ merchant, setEdit }) => (
     </button>
   </>
 )
+
+Show.propTypes = {
+  setEdit: PropTypes.func.isRequired,
+  merchant: PropTypes.shape({
+    id         : PropTypes.string.isRequired,
+    hasPremium : PropTypes.bool.isRequired,
+    firstname  : PropTypes.string.isRequired,
+    lastname   : PropTypes.string.isRequired,
+    email      : PropTypes.string.isRequired,
+    phone      : PropTypes.string.isRequired,
+  }).isRequired
+}
 
 export default Show

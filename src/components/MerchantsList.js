@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import MerchantListItem from './MerchantListItem.js'
 import Pagination from './Pagination.js'
@@ -53,5 +54,19 @@ const MarchentsList = (props) => (
     <Link to="/add">Add Merchant</Link>
   </>
 )
+
+MarchentsList.propTypes = {
+  showPagination : PropTypes.bool.isRequired,
+  pagesCount     : PropTypes.number.isRequired,
+  activePage     : PropTypes.number.isRequired,
+
+  merchants : PropTypes.arrayOf(PropTypes.shape({
+    id         : PropTypes.string.isRequired,
+    hasPremium : PropTypes.bool.isRequired,
+    avatarUrl  : PropTypes.string.isRequired,
+    firstname  : PropTypes.string.isRequired,
+    lastname   : PropTypes.string.isRequired,
+  })).isRequired
+}
 
 export default connect(mapStateToProps)(MarchentsList)
