@@ -3,7 +3,7 @@ import Sort from './Sort.js'
 import PropTypes from 'prop-types'
 
 const Bids = ({ merchantId, bids }) => (
-  <table>
+  <table className='bids'>
     <thead>
       <tr>
         <th><Sort merchantId={merchantId} column={'id'}>id</Sort></th>

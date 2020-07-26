@@ -6,11 +6,13 @@ import { onSort } from './../../actionCreators.js'
 
 const Sort = ({ merchantId, column, children, onSort }) => {
   return (
-    <>
+    <div className="sort">
       <span>{children}</span>
-      <button onClick={() => onSort(merchantId, column, true)}>^</button>
-      <button onClick={() => onSort(merchantId, column, false)}>v</button>
-    </>
+      <div className='sort-buttons'>
+        <button onClick={() => onSort(merchantId, column, true)}>▴</button>
+        <button onClick={() => onSort(merchantId, column, false)}>▾</button>
+      </div>
+    </div>
   )
 }
 

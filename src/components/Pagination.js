@@ -8,8 +8,7 @@ const Pagination = ({ pagesCount, activePage }) => {
   return (
     <ul className='pagination'>
       {activePage > 1 &&
-       <li><Link to={'/?page=' + (activePage - 1)}>previous</Link></li>
-      }
+       <li><Link to={'/?page=' + (activePage - 1)}>previous</Link></li>}
 
       {pages.map(page =>
         <li key={page}>
@@ -20,8 +19,7 @@ const Pagination = ({ pagesCount, activePage }) => {
       )}
 
       {activePage < pagesCount &&
-       <li><Link to={'/?page=' + (activePage + 1)}>next</Link></li>
-      }
+       <li><Link to={'/?page=' + (activePage + 1)}>next</Link></li>}
     </ul>
   )
 }

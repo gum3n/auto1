@@ -45,14 +45,7 @@ const MarchentsList = (props) => {
 
       <ol className='merchants-list'>
         {props.merchants.map(merchant =>
-          <MerchantListItem
-            key={merchant.id}
-            id={merchant.id}
-            hasPremium={merchant.hasPremium}
-            avatarUrl={merchant.avatarUrl}
-            firstname={merchant.firstname}
-            lastname={merchant.lastname}
-          />
+          <MerchantListItem key={merchant.id} merchant={merchant} />
         )}
       </ol>
 
@@ -60,10 +53,9 @@ const MarchentsList = (props) => {
        <Pagination
          pagesCount={props.pagesCount}
          activePage={props.activePage}
-       />
-      }
+       />}
     </>
-)
+  )
 }
 
 MarchentsList.propTypes = {

@@ -2,25 +2,36 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-const MerchantListItem = (props) => {
-  return (
-    <li>
-      <Link to={'/merchant/' + props.id}>
-        <img src={'/' + props.avatarUrl} alt="avatar" />
-        <h2 style={{ color: props.hasPremium ? 'gold' : 'black' }}>
-          {props.firstname} {' '} {props.lastname}
+const MerchantListItem = ({ merchant }) => (
+  <li className={merchant.hasPremium && 'premium'}>
+    <Link to={'/merchant/' + merchant.id}>
+      <img src={'/' + merchant.avatarUrl} alt='avatar' />
+      <hgroup>
+        <h2>
+          {merchant.firstname} {' '} {merchant.lastname}
         </h2>
-      </Link>
-    </li>
-  )
-}
+        <h3>
+          <span>{merchant.email}</span>
+          <span>{merchant.phone}</span>
+          <span>bids count: {merchant.bids.length}</span>
+          <span>{merchant.id}</span>
+        </h3>
+      </hgroup>
+    </Link>
+  </li>
+)
 
 MerchantListItem.propTypes = {
-  id         : PropTypes.string.isRequired,
-  hasPremium : PropTypes.bool.isRequired,
-  avatarUrl  : PropTypes.string.isRequired,
-  firstname  : PropTypes.string.isRequired,
-  lastname   : PropTypes.string.isRequired,
+  merchant: PropTypes.shape({
+    id         : PropTypes.string.isRequired,
+    hasPremium : PropTypes.bool.isRequired,
+    avatarUrl  : PropTypes.string.isRequired,
+    firstname  : PropTypes.string.isRequired,
+    lastname   : PropTypes.string.isRequired,
+    email      : PropTypes.string.isRequired,
+    phone      : PropTypes.string.isRequired,
+    bids       : PropTypes.array.isRequired,
+  }).isRequired
 }
 
 export default MerchantListItem
