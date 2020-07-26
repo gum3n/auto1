@@ -6,24 +6,21 @@ const Pagination = ({ pagesCount, activePage }) => {
   const pages = new Array(pagesCount).fill(0).map((a, i) => i + 1)
 
   return (
-    <ul>
+    <ul className='pagination'>
       {activePage > 1 &&
-       <li><Link to={'/?page=' + (activePage - 1)}>{'<'}</Link></li>
+       <li><Link to={'/?page=' + (activePage - 1)}>previous</Link></li>
       }
 
       {pages.map(page =>
         <li key={page}>
-          <Link
-            to={'/?page=' + page}
-            style={{ fontWeight: page === activePage ? 'bold' : 'normal' }}
-          >
-            {page}
-          </Link>
+          {page === activePage ?
+           <span>{page}</span> :
+           <Link to={'/?page=' + page}>{page}</Link>}
         </li>
       )}
 
       {activePage < pagesCount &&
-       <li><Link to={'/?page=' + (activePage + 1)}>{'>'}</Link></li>
+       <li><Link to={'/?page=' + (activePage + 1)}>next</Link></li>
       }
     </ul>
   )

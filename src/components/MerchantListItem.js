@@ -5,15 +5,11 @@ import PropTypes from 'prop-types'
 const MerchantListItem = (props) => {
   return (
     <li>
-      <Link
-        to={'/merchant/' + props.id}
-        style={{
-          display: 'inline-block',
-          borderStyle: 'solid',
-          borderColor: props.hasPremium ? 'gold' : 'black'
-        }}>
+      <Link to={'/merchant/' + props.id}>
         <img src={'/' + props.avatarUrl} alt="avatar" />
-        <h2>{props.firstname} {' '} {props.lastname}</h2>
+        <h2 style={{ color: props.hasPremium ? 'gold' : 'black' }}>
+          {props.firstname} {' '} {props.lastname}
+        </h2>
       </Link>
     </li>
   )

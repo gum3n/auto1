@@ -41,7 +41,9 @@ const MarchentsList = (props) => {
 
   return (
     <>
-      <ol>
+      <Link className='add-merchant' to='/add'>Add Merchant</Link>
+
+      <ol className='merchants-list'>
         {props.merchants.map(merchant =>
           <MerchantListItem
             key={merchant.id}
@@ -60,8 +62,6 @@ const MarchentsList = (props) => {
          activePage={props.activePage}
        />
       }
-
-      <Link to="/add">Add Merchant</Link>
     </>
 )
 }
