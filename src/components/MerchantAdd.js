@@ -10,13 +10,7 @@ import MerchantForm from './MerchantForm.js'
 const MerchantAdd = (props) => {
   const onSubmit = (formData) => {
     const id = uuidv4()
-
     props.merchantsAdd({ id, ...formData })
-
-    // TODO Redirect to created merchant.  This action will be
-    //      asynchronous so redirection should happen after new
-    //      merchant was added.
-
     props.history.push('/merchant/' + id)
   }
 

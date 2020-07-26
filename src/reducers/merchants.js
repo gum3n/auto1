@@ -1,18 +1,10 @@
-import { getRandomMerchants, getRandomBids } from './../mocks/merchants.js'
-
 export default function(state = [], action) {
   switch(action.type) {
-  case 'MERCHANTS_RANDOM_LIST':
-    return getRandomMerchants(34)
+  case 'MERCHANTS_LIST':
   case 'MERCHANTS_ADD':
-    return [{ ...action.values, bids: getRandomBids() }, ...state]
   case 'MERCHANTS_EDIT':
-    return state.map(merchant => {
-      if(merchant.id !== action.id) return merchant
-      return { ...merchant, ...action.values }
-    })
   case 'MERCHANTS_REMOVE':
-    return state.filter(({ id }) => id !== action.id)
+    return action.merchantsList
   case 'MERCHANTS_SORT_BIDS':
     return state.map(merchant => {
       if(merchant.id !== action.id) return merchant

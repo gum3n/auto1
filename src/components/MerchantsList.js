@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
+import Loading from './Loading.js'
 import MerchantListItem from './MerchantListItem.js'
 import Pagination from './Pagination.js'
 
@@ -26,34 +27,44 @@ const mapStateToProps = (state, ownProps) => {
     merchants = merchants.slice(start, end)
   }
 
-  return { merchants, showPagination, pagesCount, activePage }
+  return {
+    pending: state.pending.includes('MERCHANTS_LIST'),
+    merchants,
+    showPagination,
+    pagesCount,
+    activePage
+  }
 }
 
-const MarchentsList = (props) => (
-  <>
-    <ol>
-      {props.merchants.map(merchant =>
-        <MerchantListItem
-          key={merchant.id}
-          id={merchant.id}
-          hasPremium={merchant.hasPremium}
-          avatarUrl={merchant.avatarUrl}
-          firstname={merchant.firstname}
-          lastname={merchant.lastname}
-        />
-      )}
-    </ol>
+const MarchentsList = (props) => {
+  if(props.pending) return <Loading />
 
-    {props.showPagination &&
-     <Pagination
-       pagesCount={props.pagesCount}
-       activePage={props.activePage}
-     />
-    }
+  return (
+    <>
+      <ol>
+        {props.merchants.map(merchant =>
+          <MerchantListItem
+            key={merchant.id}
+            id={merchant.id}
+            hasPremium={merchant.hasPremium}
+            avatarUrl={merchant.avatarUrl}
+            firstname={merchant.firstname}
+            lastname={merchant.lastname}
+          />
+        )}
+      </ol>
 
-    <Link to="/add">Add Merchant</Link>
-  </>
+      {props.showPagination &&
+       <Pagination
+         pagesCount={props.pagesCount}
+         activePage={props.activePage}
+       />
+      }
+
+      <Link to="/add">Add Merchant</Link>
+    </>
 )
+}
 
 MarchentsList.propTypes = {
   showPagination : PropTypes.bool.isRequired,

@@ -1,53 +1,35 @@
 import { v4 as uuidv4 } from 'uuid'
+import random from './random.js'
 import firstnames from './firstnames.js'
 import lastnames from './lastnames.js'
 import carTitles from './carTitles.js'
 import avatars from './avatars.js'
 
-// The maximum is exclusive and the minimum is inclusive
-function getRandomInt(min, max) {
-  min = Math.ceil(min)
-  max = Math.floor(max)
-  return Math.floor(Math.random() * (max - min)) + min
-}
-
-function getRandomFromList(list) {
-  return list[getRandomInt(0, list.length)]
-}
-
-function getRandomPhone() {
-  return new Array(9).fill(0).map(() => getRandomInt(0, 10)).join('')
-}
-
-function getRandomTime() {
-  return new Date().getTime() - getRandomInt(0, 100000000000)
-}
-
 export const getRandomBids = (count) => {
-  count = count ? Math.min(1, count) : getRandomInt(1, 30)
+  count = count ? Math.min(1, count) : random.int(1, 30)
 
   return new Array(count).fill({}).map(() => ({
     id: uuidv4(),
-    carTitle: getRandomFromList(carTitles),
-    amount: getRandomInt(1, 100),
-    created: getRandomTime(),
+    carTitle: random.fromList(carTitles),
+    amount: random.int(1, 100),
+    created: random.time(),
   }))
 }
 
 // TODO generate merchants random list only on npm start
 export const getRandomMerchants = (count=1) => {
   return new Array(count).fill({}).map(() => {
-    const firstname = getRandomFromList(firstnames)
-    const lastname  = getRandomFromList(lastnames)
+    const firstname = random.fromList(firstnames)
+    const lastname  = random.fromList(lastnames)
 
     return {
       id: uuidv4(),
       firstname,
       lastname,
-      avatarUrl: getRandomFromList(avatars),
+      avatarUrl: random.fromList(avatars),
       email: `${firstname}.${lastname}@gmail.com`,
-      phone: getRandomPhone(),
-      hasPremium: getRandomFromList([true, false]),
+      phone: random.phone(),
+      hasPremium: random.fromList([true, false]),
       bids: getRandomBids(),
     }
   })

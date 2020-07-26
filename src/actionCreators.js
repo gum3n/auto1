@@ -1,18 +1,32 @@
-export const generateRandomList = () => (dispatch) => {
-  dispatch({ type: 'MERCHANTS_RANDOM_LIST' })
+import * as api from './api.js'
+
+export const getMerchantsList = () => (dispatch) => {
+  dispatch({ type: 'PENDING_MERCHANTS_LIST' })
+  api.getMerchantsList().then((merchantsList) => {
+    dispatch({ type: 'MERCHANTS_LIST', merchantsList })
+  })
 }
 
 export const merchantsAdd = (values) => (dispatch) => {
-  dispatch({ type: 'MERCHANTS_ADD', values })
+  dispatch({ type: 'PENDING_MERCHANTS_ADD' })
+  api.addMerchant(values).then((merchantsList) => {
+    dispatch({ type: 'MERCHANTS_ADD', merchantsList })
+  })
 }
 
 export const merchantsEdit = (id, values) => (dispatch) => {
-  dispatch({ type: 'MERCHANTS_EDIT', id, values })
+  dispatch({ type: 'PENDING_MERCHANTS_EDIT' })
+  api.editMerchant(id, values).then((merchantsList) => {
+    dispatch({ type: 'MERCHANTS_EDIT', merchantsList })
+  })
 }
 
 export const merchantsRemove = (id, history) => (dispatch) => {
-  dispatch({ type: 'MERCHANTS_REMOVE', id })
-  history.push('/')
+  dispatch({ type: 'PENDING_MERCHANTS_REMOVE' })
+  api.removeMerchant(id).then((merchantsList) => {
+    dispatch({ type: 'MERCHANTS_REMOVE', merchantsList })
+    history.push('/')
+  })
 }
 
 export const onSort = (id, column, ascending) => (dispatch) => {

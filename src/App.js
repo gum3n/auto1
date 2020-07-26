@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { BrowserRouter, Route } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { generateRandomList } from './actionCreators.js'
+import { getMerchantsList } from './actionCreators.js'
 
 import 'normalize.css'
 import './App.css'
@@ -11,8 +11,8 @@ import MerchantsList from './components/MerchantsList.js'
 import MerchantDetails from './components/MerchantDetails'
 import MerchantAdd from './components/MerchantAdd.js'
 
-const App = ({ generateRandomList }) => {
-  useEffect(generateRandomList)
+const App = ({ getMerchantsList }) => {
+  useEffect(getMerchantsList)
 
   // TODO update document.title to show currently displayed page
   return (
@@ -25,7 +25,7 @@ const App = ({ generateRandomList }) => {
 }
 
 App.propTypes = {
-  generateRandomList: PropTypes.func.isRequired
+  getMerchantsList: PropTypes.func.isRequired
 }
 
-export default connect(null, { generateRandomList })(App)
+export default connect(null, { getMerchantsList })(App)
