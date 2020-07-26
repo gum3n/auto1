@@ -41,7 +41,7 @@ const MarchentsList = (props) => {
 
   return (
     <>
-      <Link className='add-merchant' to='/add'>Add Merchant</Link>
+      <Link className='button' to='/add'>Add Merchant</Link>
 
       <ol className='merchants-list'>
         {props.merchants.map(merchant =>

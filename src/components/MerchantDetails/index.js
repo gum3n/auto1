@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 import { merchantsRemove } from './../../actionCreators.js'
+import GoBack from './../GoBack.js'
 import Loading from './../Loading.js'
 import InvalidId from './InvalidId.js'
 import PersonalData from './PersonalData'
@@ -27,7 +28,7 @@ const MerchantDetails = ({
 
   return (
     <>
-      <p><Link to="/">Bo Back</Link></p>
+      <p><GoBack /></p>
 
       <PersonalData merchant={merchant} />
 

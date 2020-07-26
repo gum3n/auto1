@@ -3,21 +3,41 @@ body {
   padding: 2em;
   max-width: 50em;
   margin: 0 auto;
+  background-color: #eee;
 }
 
 a {
   color: currentColor;
 }
 
+form label {
+  display: inline-block;
+  width: 12ch;
+}
+form input {
+  padding: .3em .6em;
+}
+
+.button {
+  background-color: #fff;
+  border: 1px solid #000;
+  padding: .5em 1em;
+  text-decoration: none;
+  font-family: monospace;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: .8em;
+}
+
 .merchants-list {
   list-style: none;
   margin: 0;
   padding: 0;
-  font-size: 1.2em;
 }
 .merchants-list > li {
   margin: 1em 0;
   position: relative;
+  background-color: #fff;
 }
 .merchants-list > li.premium::before {
   content: '★';
@@ -26,19 +46,20 @@ a {
   top: -10px;
   color: gold;
   font-size: 2em;
-  text-shadow: 0px 0px 2px black;
+  text-shadow: 0px 0px 2px #000;
+  pointer-events: none;
 }
 .merchants-list > li > a {
   display: flex;
   align-items: center;
-  border: 1px solid black;
+  border: 1px solid #000;
   height: 3em;
   text-decoration: none;
   overflow: hidden;
 }
 .merchants-list > li img {
   height: 100%;
-  border-right: 1px solid black;
+  border-right: 1px solid #000;
   box-shadow: 0 0 10px rgba(0, 0, 0, .25);
 }
 .merchants-list hgroup {
@@ -74,9 +95,11 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  font-family: monospace;
+  font-size: .8em;
 }
 .pagination > li {
-  border: 1px solid black;
+  border: 1px solid #000;
   margin-left: -1px;
   margin-bottom: -1px;
 }
@@ -84,14 +107,32 @@ a {
   display: inline-block;
   padding: .5em 1em;
 }
+.pagination > li > a:hover,
 .pagination > li > span {
-  /* TODO */
+  background-color: #fff;
 }
+
 
 .bids {
   table-layout: fixed;
   width: 100%;
+  border-spacing: 0;
 }
+.bids thead {
+  font-family: monospace;
+  font-weight: normal;
+}
+.bids tbody tr:hover {
+  background-color: #fff;
+}
+.bids th,
+.bids td {
+  border-bottom: 1px solid #aaa;
+  padding: .5em 1em;
+}
+/* Control column size */
+.bids th:nth-child(2) { width: 12ch }
+.bids th:nth-child(3) { width: 8ch }
 
 .sort {
   display: flex;
@@ -105,6 +146,7 @@ a {
   border: 0;
   background: none;
   cursor: pointer;
+  line-height: .6;
 }
 .sort-buttons button:not(:hover) {
   opacity: .5;

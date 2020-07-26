@@ -17,9 +17,9 @@ const App = ({ getMerchantsList }) => {
   // TODO update document.title to show currently displayed page
   return (
     <BrowserRouter>
-      <Route exact path="/" component={MerchantsList} />
-      <Route path="/merchant/:id" component={MerchantDetails} />
-      <Route path="/add" component={MerchantAdd} />
+      <Route exact path='/' component={MerchantsList} />
+      <Route path='/merchant/:id' component={MerchantDetails} />
+      <Route path='/add' component={MerchantAdd} />
     </BrowserRouter>
   )
 }

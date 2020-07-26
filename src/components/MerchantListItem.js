@@ -11,8 +11,8 @@ const MerchantListItem = ({ merchant }) => (
           {merchant.firstname} {' '} {merchant.lastname}
         </h2>
         <h3>
-          <span>{merchant.email}</span>
           <span>{merchant.phone}</span>
+          <span>{merchant.email}</span>
           <span>bids count: {merchant.bids.length}</span>
           <span>{merchant.id}</span>
         </h3>

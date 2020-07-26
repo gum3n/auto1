@@ -6,7 +6,7 @@ import { onSort } from './../../actionCreators.js'
 
 const Sort = ({ merchantId, column, children, onSort }) => {
   return (
-    <div className="sort">
+    <div className='sort'>
       <span>{children}</span>
       <div className='sort-buttons'>
         <button onClick={() => onSort(merchantId, column, true)}>▴</button>

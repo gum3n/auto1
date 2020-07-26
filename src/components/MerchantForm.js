@@ -27,85 +27,85 @@ const MerchantForm = (props) => {
   return (
     <form onSubmit={onSubmit}>
       <p>
-        <label htmlFor="firstname">Firstname</label>
+        <label htmlFor='firstname'>Firstname</label>
         <input
           required
-          id="firstname"
-          type="text"
-          name="firstname"
+          id='firstname'
+          type='text'
+          name='firstname'
           onChange={event => setFirstname(event.target.value)}
           value={firstname}
-          placeholder="Firstname"
+          placeholder='Firstname'
         />
       </p>
 
       <p>
-        <label htmlFor="lastname">Lastname</label>
+        <label htmlFor='lastname'>Lastname</label>
         <input
           required
-          id="lastname"
-          type="text"
-          name="lastname"
+          id='lastname'
+          type='text'
+          name='lastname'
           onChange={event => setLastname(event.target.value)}
           value={lastname}
-          placeholder="Lastname"
+          placeholder='Lastname'
         />
       </p>
 
       <p>
-        <label htmlFor="avatar-url">Avatar URL</label>
+        <label htmlFor='avatar-url'>Avatar URL</label>
         <input
           required
-          id="avatar-url"
-          type="text"
-          name="avatar-url"
+          id='avatar-url'
+          type='text'
+          name='avatar-url'
           onChange={event => setAvatarUrl(event.target.value)}
           value={avatarUrl}
-          placeholder="Avatar URL"
+          placeholder='Avatar URL'
         />
       </p>
 
       <p>
-        <label htmlFor="email">Email</label>
+        <label htmlFor='email'>Email</label>
         <input
           required
-          id="email"
-          type="email"
-          name="email"
+          id='email'
+          type='email'
+          name='email'
           onChange={event => setEmail(event.target.value)}
           value={email}
-          placeholder="Email"
+          placeholder='Email'
         />
       </p>
 
       <p>
-        <label htmlFor="phone">Phone</label>
+        <label htmlFor='phone'>Phone</label>
         <input
           required
-          id="phone"
-          type="tel"
-          pattern="(\+[0-9]{2})?[0-9]{9}"
-          title="Pattern: 123456789 or +00123456789"
-          name="phone"
+          id='phone'
+          type='tel'
+          pattern='(\+[0-9]{2})?[0-9]{9}'
+          title='Pattern: 123456789 or +00123456789'
+          name='phone'
           onChange={event => setPhone(event.target.value)}
           value={phone}
-          placeholder="[+48]000000000"
+          placeholder='[+48]000000000'
         />
       </p>
 
       <p>
-        <label htmlFor="has-premium">Has Premium</label>
+        <label htmlFor='has-premium'>Has Premium</label>
         <input
-          id="has-premium"
-          type="checkbox"
-          name="has-premium"
+          id='has-premium'
+          type='checkbox'
+          name='has-premium'
           onChange={event => setHasPremium(event.target.checked)}
           checked={hasPremium}
         />
       </p>
 
       <p>
-        <input type="submit" value="Submit" />
+        <input className="button" type='submit' value='Submit' />
       </p>
     </form>
   )
