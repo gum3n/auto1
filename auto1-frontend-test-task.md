@@ -16,13 +16,17 @@ Back-end API should be mocked.
 Also array of bids which will be assigned to newly created merchant can be randomized somehow.
 
 ## Data structure example
+
+```
 Bid {
   id: string,
   carTitle: string,
   amount: number,
   created: string
 }
+```
 
+```
 Merchant {
   id: string,
   firstname: string,
@@ -33,3 +37,4 @@ Merchant {
   hasPremium: boolean,
   bids: Array<Bid>
 }
+```
