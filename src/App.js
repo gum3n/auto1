@@ -14,7 +14,6 @@ import MerchantAdd from './components/MerchantAdd.js'
 const App = ({ getMerchantsList }) => {
   useEffect(getMerchantsList)
 
-  // TODO update document.title to show currently displayed page
   return (
     <BrowserRouter>
       <Route exact path='/' component={MerchantsList} />

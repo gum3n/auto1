@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 const MerchantListItem = ({ merchant }) => (
-  <li className={merchant.hasPremium && 'premium'}>
+  <li className={merchant.hasPremium ? 'premium' : ''}>
     <Link to={'/merchant/' + merchant.id}>
       <img src={'/' + merchant.avatarUrl} alt='avatar' />
       <hgroup>

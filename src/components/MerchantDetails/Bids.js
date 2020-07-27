@@ -19,7 +19,7 @@ const Bids = ({ merchantId, bids }) => (
           <td>{bid.id}</td>
           <td>{bid.carTitle}</td>
           <td>{bid.amount}</td>
-          <td>{new Date(bid.created).toString()}</td>
+          <td>{new Date(bid.created).toDateString()}</td>
         </tr>
       )}
     </tbody>
