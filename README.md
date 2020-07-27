@@ -2,6 +2,8 @@
 
 [Task description](auto1-frontend-test-task.md)
 
+![Screenshot](screenshot.png)
+
 ## Install and run
 
 For better experience please install and use [nvm](https://github.com/nvm-sh/nvm#install--update-script).
